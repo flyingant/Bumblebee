@@ -22,7 +22,7 @@ const merge = (dest, src) => {
 
 const INITIAL_STATE = {
   deviceInfo: {},
-  message: 'Hello 啊！',
+  message: 'The quick brown fox jumps over the lazy dog',
   count: 0,
 };
 

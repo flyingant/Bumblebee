@@ -1,17 +1,5 @@
-# Mini Program boilerplate 
-
-`Mini Program Boilerplate` is boilerpalte helping to build the basice MP project quickly.
-
-### Features
-
-```
-Node Builder support
-SCSS
-Tailwind Support (part of)
-Prettier
-Eslint
-autoprefixer
-```
+# Bumblebee
+Bumblebee... Bumblebee... Bumblebee...
 
 ### Prerequisites
 
@@ -39,12 +27,6 @@ if you wish to switch the mini program account, change the `scripts` section fro
 
 run `npm run build-dev` or `npm run build-stg` or `npm run build-prod` to build the final release files. 
 The final files for releasing are under folder `mp-target-folder`
-
-
-## Versioning
-
-Version: v2.0.0 (last updated at 2020-05-16)
-Version: v1.0.0 (last updated at 2019-02-11)
 
 ## Authors
 
