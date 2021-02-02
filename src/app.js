@@ -22,8 +22,7 @@ const merge = (dest, src) => {
 
 const INITIAL_STATE = {
   deviceInfo: {},
-  message: 'Hello Again!!',
-  count: 0,
+  videos: [],
 };
 
 App({

@@ -1,17 +1,15 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-const-assign */
-/* eslint-disable import/no-unresolved */
-import log from '../../utils/logger';
+import { navigateToVideoPlayerPage } from '../../utils/navigator';
 
 const app = getApp();
 
 Page({
-  data: {},
+  data: {
+    videos: [],
+  },
   onLoad() {},
 
   onShow() {
     app.setActivePage(this, (state) => {
-      log('Global State:', state);
       const { videos } = state;
       return {
         videos,
@@ -19,13 +17,12 @@ Page({
     });
   },
 
-  onTapToChangeCount() {
-    let { count } = this.data;
-    ++count;
+  onSelectVideo(e) {
+    const { videos } = this.data;
+    const { videoId } = e.target.dataset;
     app.dispatch({
-      count,
-      message: `你点击了 ${count} 次!`,
+      selectedVideo: videos.find((v) => v.id === videoId),
     });
-    log('Page State:', this.data);
+    navigateToVideoPlayerPage();
   },
 });
