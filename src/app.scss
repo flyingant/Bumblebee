@@ -1,3 +1,8 @@
-// @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.video-box {
+  width: 320px;
+  height: 180px;
+}

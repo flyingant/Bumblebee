@@ -12,10 +12,9 @@ Page({
   onShow() {
     app.setActivePage(this, (state) => {
       log('Global State:', state);
-      const { message, count } = state;
+      const { videos } = state;
       return {
-        message,
-        count,
+        videos,
       };
     });
   },
@@ -25,7 +24,7 @@ Page({
     ++count;
     app.dispatch({
       count,
-      message: `你点击了 ${count} 次`,
+      message: `你点击了 ${count} 次!`,
     });
     log('Page State:', this.data);
   },

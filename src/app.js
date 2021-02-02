@@ -4,7 +4,7 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import log from './utils/logger';
-import { APP_NAME, VERSION, ENABLE_DEBUGGER_MESSAGE } from './project.constants.js';
+import { APP_NAME, VERSION, ENABLE_DEBUGGER_MESSAGE, BUMBLEBEE_BASE_URL } from './constants';
 
 const merge = (dest, src) => {
   if (dest === null || typeof dest !== 'object' || Array.isArray(dest)) {
@@ -22,7 +22,7 @@ const merge = (dest, src) => {
 
 const INITIAL_STATE = {
   deviceInfo: {},
-  message: 'The quick brown fox jumps over the lazy dog',
+  message: 'Hello Again!!',
   count: 0,
 };
 
@@ -30,15 +30,28 @@ App({
   state: INITIAL_STATE,
 
   onLaunch(queries) {
+    const self = this;
     log('App launch Queries:', queries);
+    // fetch data
+    wx.request({
+      url: `${BUMBLEBEE_BASE_URL}/list`,
+      success: (response) => {
+        console.log('Bumblebee API Response:', response);
+        self.dispatch({
+          videos: response.data,
+        });
+      },
+    });
   },
 
   updateState(stateChange) {
     this.state = merge(this.state, stateChange);
     if (ENABLE_DEBUGGER_MESSAGE) {
+      // eslint-disable-next-line no-console
       console.group('App State Update');
-      console.log(stateChange);
-      console.log(this.state);
+      log(stateChange);
+      log(this.state);
+      // eslint-disable-next-line no-console
       console.groupEnd();
     }
   },
