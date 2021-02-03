@@ -6,7 +6,6 @@ Page({
   data: {
     videos: [],
   },
-  onLoad() {},
 
   onShow() {
     app.setActivePage(this, (state) => {
@@ -24,5 +23,9 @@ Page({
       selectedVideo: videos.find((v) => v.id === videoId),
     });
     navigateToVideoPlayerPage();
+  },
+
+  onShareAppMessage() {
+    return { title: 'Bumblbee Bumblbee Bumblbee' };
   },
 });

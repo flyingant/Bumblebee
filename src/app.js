@@ -3,43 +3,42 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
+import merge from 'deepmerge';
 import log from './utils/logger';
-import { APP_NAME, VERSION, ENABLE_DEBUGGER_MESSAGE, BUMBLEBEE_BASE_URL } from './constants';
-
-const merge = (dest, src) => {
-  if (dest === null || typeof dest !== 'object' || Array.isArray(dest)) {
-    return src;
-  }
-  if (src === null || typeof src !== 'object' || Array.isArray(src)) {
-    return src;
-  }
-  const result = { ...dest };
-  for (const key in src) {
-    result[key] = merge(result[key], src[key]);
-  }
-  return result;
-};
+import { ENABLE_DEBUGGER_MESSAGE } from './constants';
+import { navigateToVideoPlayerPage } from './utils/navigator';
+import { requestAPI } from './utils/request';
 
 const INITIAL_STATE = {
-  deviceInfo: {},
   videos: [],
+  selectedVideo: {},
 };
 
 App({
   state: INITIAL_STATE,
 
-  onLaunch(queries) {
+  onLaunch(options) {
     const self = this;
-    log('App launch Queries:', queries);
-    // fetch data
-    wx.request({
-      url: `${BUMBLEBEE_BASE_URL}/list`,
-      success: (response) => {
-        console.log('Bumblebee API Response:', response);
-        self.dispatch({
-          videos: response.data,
-        });
-      },
+    console.log('App launch Queries:', options);
+    requestAPI({
+      method: 'GET',
+      uri: '/list',
+      header: {},
+      data: {},
+    }).then((response) => {
+      log('Bumblebee API Response:', response);
+      const videos = response.data;
+      let selectedVideo = {};
+      if (options.query && options.query.selectedVideoId) {
+        selectedVideo = videos.find((v) => `${v.id}` === options.query.selectedVideoId);
+      }
+      self.dispatch({
+        videos,
+        selectedVideo,
+      });
+      if (Object.keys(selectedVideo).length > 0) {
+        navigateToVideoPlayerPage();
+      }
     });
   },
 
