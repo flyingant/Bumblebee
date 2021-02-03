@@ -1,5 +1,5 @@
 <view class="w-screen h-screen">
-  <swiper class="w-full h-full" circular="{{true}}" previous-margin="60px" next-margin="60px" bindchange="onSwiperChange">
+  <swiper class="w-full h-full" circular="{{true}}" previous-margin="60px" next-margin="60px">
     <swiper-item wx:for="{{videos}}" wx:key="id" class="w-full h-full">
       <view class="w-full h-full">
         <image class="w-full h-full thumbnail" lazy-load="{{true}}" mode="aspectFit" src="{{item.data.thumbnail}}" data-video-id="{{item.id}}" bind:tap="onSelectVideo"/>
