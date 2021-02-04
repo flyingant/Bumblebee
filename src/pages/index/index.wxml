@@ -1,7 +1,11 @@
 <view class="w-screen h-screen">
   <swiper class="w-full h-full" circular="{{true}}" previous-margin="60px" next-margin="60px">
-    <swiper-item wx:for="{{videos}}" wx:key="id" class="w-full h-full">
-      <view class="w-full h-full">
+    <swiper-item wx:for="{{videos}}" wx:key="id" class="w-full h-full ">
+      <view class="w-full h-full relative">
+        <view class="title absolute">
+          <view class="overlay w-full h-full absolute z-0"></view>
+          <text class="relative z-10">{{item.data.name}}</text>
+        </view>
         <image class="w-full h-full thumbnail" lazy-load="{{true}}" mode="aspectFit" src="{{item.data.thumbnail}}" data-video-id="{{item.id}}" bind:tap="onSelectVideo"/>
       </view>
     </swiper-item>

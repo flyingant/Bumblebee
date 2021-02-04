@@ -1,5 +1,21 @@
 page {
   background-color: bisque;
+  .title {
+    font-family: bubblegum;
+    top: 56px;
+    left: 12px;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 36px;
+    max-width: 80%;
+    border-radius: 8px;
+    .overlay {
+      top: 0;
+      left: 0;
+      opacity: .2;
+      background-color: #000;
+    }
+  }
   .thumbnail {
     border: 2px solid bisque;;
   }
