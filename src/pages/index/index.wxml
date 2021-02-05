@@ -1,3 +1,4 @@
+<loading-indicator wx:if="{{loading}}" />
 <view class="w-screen h-screen">
   <swiper class="w-full h-full" circular="{{true}}" previous-margin="60px" next-margin="60px">
     <swiper-item wx:for="{{videos}}" wx:key="id" class="w-full h-full ">
@@ -11,3 +12,4 @@
     </swiper-item>
   </swiper>
 </view>
+

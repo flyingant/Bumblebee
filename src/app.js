@@ -10,6 +10,7 @@ import { navigateToVideoPlayerPage } from './utils/navigator';
 import { requestAPI } from './utils/request';
 
 const INITIAL_STATE = {
+  loading: false,
   videos: [],
   selectedVideo: {},
 };
@@ -18,8 +19,11 @@ App({
   state: INITIAL_STATE,
 
   onLaunch(options) {
-    const self = this;
     console.log('App launch Queries:', options);
+    const self = this;
+    this.dispatch({
+      loading: true,
+    });
     requestAPI({
       method: 'GET',
       uri: '/list',
@@ -35,6 +39,7 @@ App({
       self.dispatch({
         videos,
         selectedVideo,
+        loading: false,
       });
       if (Object.keys(selectedVideo).length > 0) {
         navigateToVideoPlayerPage();

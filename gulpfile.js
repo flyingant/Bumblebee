@@ -147,7 +147,7 @@ task('watch', () => {
     {
       delay: 1000,
     },
-    series('copy'),
+    series('copy', 'copy-dev-constants', 'copy-mp-config'),
   ).on('change', (path) => {
     log(`File ${path} was changed`);
   });
