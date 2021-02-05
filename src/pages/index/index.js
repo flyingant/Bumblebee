@@ -9,8 +9,9 @@ Page({
 
   onShow() {
     app.setActivePage(this, (state) => {
-      const { videos } = state;
+      const { videos, loading } = state;
       return {
+        loading,
         videos,
       };
     });

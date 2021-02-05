@@ -1,0 +1,4 @@
+<view class="loading">
+  <view class="overlay"></view>
+  <view class="indicator"><view class="heart"></view></view>
+</view>
