@@ -1,32 +1,15 @@
-import { navigateToVideoPlayerPage } from '../../utils/navigator';
-
-const app = getApp();
+import { relaunchToVideoListPage } from '../../utils/navigator';
 
 Page({
-  data: {
-    videos: [],
-  },
+  data: {},
 
-  onShow() {
-    app.setActivePage(this, (state) => {
-      const { videos, loading } = state;
-      return {
-        loading,
-        videos,
-      };
-    });
-  },
+  onShow() {},
 
-  onSelectVideo(e) {
-    const { videos } = this.data;
-    const { videoId } = e.target.dataset;
-    app.dispatch({
-      selectedVideo: videos.find((v) => v.id === videoId),
-    });
-    navigateToVideoPlayerPage();
-  },
-
-  onShareAppMessage() {
-    return { title: 'Bumblbee Bumblbee Bumblbee' };
+  onTapHeart() {
+    const today = +new Date();
+    if (today < +new Date('2021-07-06')) {
+      return;
+    }
+    relaunchToVideoListPage({ source: 'Landing Page' });
   },
 });

@@ -1,0 +1,7 @@
+{
+  "pageOrientation": "landscape",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "loading-indicator": "../../components/loading-indicator"
+  }
+}

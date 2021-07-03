@@ -52,3 +52,7 @@ export function relaunchToIndexPage(options) {
 export function navigateToVideoPlayerPage(options) {
   return directlyNavigateTo('/pages/videoPlayer/index', options);
 }
+
+export function relaunchToVideoListPage(options) {
+  return directlyRelaunch('/pages/VideoListPage/index', options);
+}
