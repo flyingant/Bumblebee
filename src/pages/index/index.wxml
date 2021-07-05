@@ -1,5 +1,4 @@
 <loading-indicator bind:tap="onTapHeart"/>
 <view class="w-screen h-screen flex items-center justify-center">
-  <view style="padding-top: 92px"> Beating Heart for Baby </view>
 </view>
 
